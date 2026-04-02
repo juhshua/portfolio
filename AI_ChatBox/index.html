@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chatbot Mockup</title>
+  <style>
+    :root {
+      --primary: #6e00ff;
+      --secondary: #00d1ff;
+      --bg: #f5f7fa;
+      --user-bubble: #e3f2fd;
+      --ai-bubble: #ffffff;
+      --text: #333333;
+    }
+    
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    
+    body {
+      background: var(--bg);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .chat-container {
+      width: 100%;
+      max-width: 500px;
+      height: 600px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .chat-header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .message {
+      max-width: 80%;
+      padding: 12px 15px;
+      border-radius: 18px;
+      line-height: 1.4;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .user-message {
+      align-self: flex-end;
+      background: var(--user-bubble);
+      color: var(--text);
+      border-bottom-right-radius: 5px;
+    }
+    
+    .ai-message {
+      align-self: flex-start;
+      background: var(--ai-bubble);
+      color: var(--text);
+      border-bottom-left-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .typing-indicator {
+      align-self: flex-start;
+      display: inline-flex;
+      gap: 5px;
+      padding: 12px 15px;
+      background: var(--ai-bubble);
+      border-radius: 18px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: #aaa;
+      border-radius: 50%;
+      animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+    
+    .typing-dot:nth-child(1) { animation-delay: 0s; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    
+    @keyframes typingAnimation {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-5px); }
+    }
+    
+    .chat-input {
+      display: flex;
+      padding: 15px;
+      border-top: 1px solid #eee;
+    }
+    
+    #user-input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      outline: none;
+      font-size: 16px;
+    }
+    
+    #send-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    #send-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.05);
+    }
+    
+    .quick-replies {
+      display: flex;
+      gap: 8px;
+      padding: 0 15px 15px;
+      flex-wrap: wrap;
+    }
+    
+    .quick-reply {
+      background: var(--user-bubble);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 15px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .quick-reply:hover {
+      background: #d0e3f7;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      FOJO-AI Assistant 🤖
+    </div>
+    
+    <div class="chat-messages" id="chat-messages">
+      <!-- Messages will appear here -->
+    </div>
+    
+    <div class="quick-replies" id="quick-replies">
+      <button class="quick-reply">What can you do?</button>
+      <button class="quick-reply">Tell me a fact</button>
+      <button class="quick-reply">Help with coding</button>
+    </div>
+    
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Type your message...">
+      <button id="send-btn">→</button>
+    </div>
+  </div>
+
+  <script>
+    const chatMessages = document.getElementById('chat-messages');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const quickReplies = document.getElementById('quick-replies');
+    
+    // Mock AI responses
+    const aiResponses = {
+      "hello": "Hi there! How can I assist you today? 😊",
+      "what can you do": "I can: \n• Answer questions \n• Generate code snippets \n• Explain concepts \n• Tell jokes! Try asking me anything.",
+      "tell me a fact": "Did you know? The first computer bug was an actual moth stuck in a Harvard Mark II computer in 1947! 🦋",
+      "help with coding": "Sure! Here's a Python function to calculate factorial:\n\n```python\ndef factorial(n):\n    return 1 if n == 0 else n * factorial(n-1)\n```",
+      "default": "I'm an AI trained to assist with information and tasks. Try asking about:\n• Technology\n• Science\n• Programming\n• General knowledge"
+    };
+    
+    // Add a message to the chat
+    function addMessage(text, isUser) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message', isUser ? 'user-message' : 'ai-message');
+      messageDiv.textContent = text;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Show typing indicator
+    function showTyping() {
+      const typingDiv = document.createElement('div');
+      typingDiv.classList.add('typing-indicator');
+      typingDiv.innerHTML = `
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      `;
+      chatMessages.appendChild(typingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return typingDiv;
+    }
+    
+    // Simulate AI response
+    function getAIResponse(userText) {
+      const lowerText = userText.toLowerCase();
+      
+      // Check for matching responses
+      for (const [key, response] of Object.entries(aiResponses)) {
+        if (lowerText.includes(key)) {
+          return response;
+        }
+      }
+      
+      return aiResponses.default;
+    }
+    
+    // Handle user input
+    function handleUserInput() {
+      const text = userInput.value.trim();
+      if (text === '') return;
+      
+      addMessage(text, true);
+      userInput.value = '';
+      
+      // Show typing indicator
+      const typing = showTyping();
+      
+      // Simulate AI thinking delay
+      setTimeout(() => {
+        chatMessages.removeChild(typing);
+        const aiResponse = getAIResponse(text);
+        addMessage(aiResponse, false);
+      }, 1500);
+    }
+    
+    // Event listeners
+    sendBtn.addEventListener('click', handleUserInput);
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleUserInput();
+    });
+    
+    // Quick replies
+    document.querySelectorAll('.quick-reply').forEach(button => {
+      button.addEventListener('click', () => {
+        userInput.value = button.textContent;
+        handleUserInput();
+      });
+    });
+    
+    // Initial greeting
+    setTimeout(() => {
+      addMessage("Hello! I'm your AI assistant. Ask me anything or try the quick replies below 👇", false);
+    }, 500);
+  </script>
+</body>
+</html>

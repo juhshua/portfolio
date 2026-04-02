@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ohikere Joshua - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --accent: #8b5cf6;
+      --accent-light: #a78bfa;
+      --bg: #ffffff;
+      --bg-secondary: #f8fafc;
+      --text: #0f172a;
+      --text-secondary: #64748b;
+      --border: #e2e8f0;
+      --hover: #f1f5f9;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-secondary);
+    }
+    
+    header {
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+      padding: 8em 2em 5em;
+      position: relative;
+      margin-top: 60px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .header-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    header h1 {
+      font-size: 3em;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5em;
+      letter-spacing: -0.02em;
+    }
+    
+    header p {
+      font-size: 1.25em;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    
+    .tagline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75em;
+      margin-top: 2em;
+    }
+    
+    .tag {
+      padding: 0.4em 1em;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.875em;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      transition: all 0.2s ease;
+    }
+    
+    .tag:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.25em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.125em;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2em;
+    }
+    
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9375em;
+      transition: color 0.2s ease;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3em 2em;
+    }
+    
+    section {
+      margin-bottom: 6em;
+    }
+    
+    h2 {
+      font-size: 2em;
+      margin-bottom: 2em;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      position: relative;
+      padding-bottom: 0.5em;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: 2px;
+    }
+    
+    .experience-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5em;
+    }
+    
+    .experience-item {
+      background: var(--bg-secondary);
+      padding: 2em;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .experience-item:hover {
+      border-left-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
+      transform: translateX(4px);
+    }
+    
+    .experience-header {
+      margin-bottom: 1em;
+    }
+    
+    .experience-header h3 {
+      font-size: 1.25em;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5em;
+    }
+    
+    .experience-company {
+      display: block;
+      font-size: 1em;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 0.25em;
+    }
+    
+    .experience-period {
+      display: block;
+      font-size: 0.875em;
+      color: var(--text-secondary);
+    }
+    
+    .experience-details {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .experience-details li {
+      padding-left: 1.5em;
+      position: relative;
+      margin-bottom: 0.75em;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .experience-details li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .education-container {
+      background: var(--bg-secondary);
+      padding: 2.5em;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    
+    .education-item {
+      display: flex;
+      gap: 2em;
+    }
+    
+    .education-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      font-size: 1.5em;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+    
+    .education-content h3 {
+      font-size: 1.5em;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5em;
+    }
+    
+    .education-school {
+      font-size: 1.125em;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 0.25em;
+    }
+    
+    .education-period {
+      font-size: 0.9375em;
+      color: var(--text-secondary);
+      margin-bottom: 0.5em;
+    }
+    
+    .education-gpa {
+      font-size: 1em;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1.5em;
+    }
+    
+    .education-details h4 {
+      font-size: 0.9375em;
+      font-weight: 600;
+      color: var(--text);
+      margin: 1.5em 0 0.75em 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .education-details h4:first-child {
+      margin-top: 0;
+    }
+    
+    .education-details ul {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5em;
+    }
+    
+    .education-details li {
+      padding-left: 1.25em;
+      position: relative;
+      color: var(--text-secondary);
+      font-size: 0.9375em;
+    }
+    
+    .education-details li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4em;
+      align-items: start;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-text p {
+      margin-bottom: 1.25em;
+      font-size: 1em;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    
+    .about-image {
+      position: relative;
+    }
+    
+    .profile-img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5em;
+    }
+    
+    .skill-card {
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      padding: 1.75em;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    }
+    
+    .skill-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+      transform: translateY(-2px);
+      background: var(--bg);
+    }
+    
+    .skill-icon {
+      font-size: 2em;
+      margin-bottom: 0.75em;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .skill-card h3 {
+      font-size: 1.125em;
+      margin-bottom: 0.5em;
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .skill-card p {
+      color: var(--text-secondary);
+      font-size: 0.875em;
+      line-height: 1.6;
+    }
+    
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2em;
+    }
+    
+    .project-card {
+      background: var(--bg);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    
+    .project-card:hover {
+      border-top-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.15);
+      transform: translateY(-4px);
+    }
+    
+    .project-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .app-screenshots {
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
+      width: 100%;
+      margin-bottom: 1.5em;
+    }
+    
+    .app-screenshot-item {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .app-screenshot-item img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    
+    .app-label {
+      display: inline-block;
+      margin-top: 0.5em;
+      padding: 0.35em 0.85em;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.8em;
+      font-weight: 600;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid var(--border);
+    }
+    
+    .project-content {
+      padding: 1.5em;
+    }
+    
+    .project-content h3 {
+      font-size: 1.25em;
+      margin-bottom: 0.75em;
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .project-content > p {
+      color: var(--text-secondary);
+      font-size: 0.9375em;
+      line-height: 1.6;
+      margin-bottom: 1em;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      margin: 1.25em 0;
+    }
+    
+    .project-tag {
+      background: var(--bg-secondary);
+      padding: 0.3em 0.75em;
+      border-radius: 4px;
+      font-size: 0.8125em;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35em;
+      transition: all 0.2s ease;
+    }
+    
+    .project-tag:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.05);
+    }
+    
+    .project-tag i {
+      font-size: 0.9em;
+    }
+
+    .project-features {
+      margin: 1em 0 1em 1.25em;
+      color: var(--text-secondary);
+      font-size: 0.875em;
+    }
+    
+    .project-features li {
+      margin-bottom: 0.5em;
+      line-height: 1.5;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 0.75em;
+      margin-top: 1.25em;
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      background: var(--bg-secondary);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875em;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    
+    .project-link:hover {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5em;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1em;
+    }
+    
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      font-size: 1.125em;
+      border: none;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    }
+    
+    .contact-text h3 {
+      font-size: 1.0625em;
+      margin-bottom: 0.25em;
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .contact-text a,
+    .contact-text p {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9375em;
+    }
+    
+    .contact-text a:hover {
+      color: var(--primary);
+    }
+    
+    .contact-form {
+      background: var(--bg-secondary);
+      padding: 2em;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5em;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5em;
+      font-weight: 500;
+      color: var(--text);
+      font-size: 0.9375em;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.75em 1em;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9375em;
+      transition: all 0.2s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      border: none;
+      padding: 0.75em 2em;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9375em;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+    }
+    
+    footer {
+      background: var(--bg-secondary);
+      text-align: center;
+      padding: 3em 2em;
+      margin-top: 6em;
+      border-top: 1px solid var(--border);
+    }
+    
+    footer p {
+      color: var(--text-secondary);
+      font-size: 0.9375em;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin-bottom: 1.5em;
+    }
+    
+    .social-link {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      color: var(--text-secondary);
+      font-size: 1.125em;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: 1px solid var(--border);
+    }
+    
+    .social-link:hover {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+    }
+    
+    .back-to-top {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.25em;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2em;
+      }
+      
+      .about-image {
+        order: -1;
+      }
+      
+      main {
+        padding: 2em 1.5em;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .experience-item {
+        padding: 1.5em;
+      }
+      
+      .experience-header h3 {
+        font-size: 1.125em;
+      }
+      
+      .education-item {
+        flex-direction: column;
+        gap: 1.5em;
+      }
+      
+      .education-container {
+        padding: 1.5em;
+      }
+      
+      .education-details ul {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">Ohikere Joshua</div>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+  
+  <header>
+    <div class="header-content">
+      <h1>Ohikere Joshua</h1>
+      <p>Frontend Engineer specializing in React Native and modern web technologies</p>
+      <div class="tagline">
+        <span class="tag">React Native</span>
+        <span class="tag">Mobile Development</span>
+        <span class="tag">API Integration</span>
+        <span class="tag">UI/UX Design</span>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <!-- About Section -->
+    <section id="about">
+      <h2>About</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I'm a Frontend Engineer specializing in React Native, currently leading mobile development at GigNation. I build production apps integrating with Rust backends and focus on delivering clean, performant user experiences.
+          </p>
+          <p>
+            My work includes building two mobile apps from scratch (Artisan & Customer platforms), architecting reusable component systems, and collaborating with backend teams to design efficient APIs.
+          </p>
+          <p>
+            Previously, I interned at Nigeria LNG where I developed the SIWES Direct App for managing student internship applications.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="closeUp.jpg" alt="Ohikere Joshua" class="profile-img">
+        </div>
+      </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="experience-container">
+        <div class="experience-item">
+          <div class="experience-header">
+            <h3>Head Frontend Engineer</h3>
+            <span class="experience-company">GigNation</span>
+            <span class="experience-period">August 2025 – Present</span>
+          </div>
+          <ul class="experience-details">
+            <li>Lead frontend development for two mobile applications (Artisan & Customer) using React Native</li>
+            <li>Built both applications from scratch, from UI architecture to production-ready deployment</li>
+            <li>Integrated RESTful APIs from a Rust backend, ensuring efficient data flow and performance</li>
+            <li>Developed reusable components and scalable UI systems to improve development efficiency</li>
+            <li>Optimized app performance and responsiveness across devices</li>
+          </ul>
+        </div>
+        
+        <div class="experience-item">
+          <div class="experience-header">
+            <h3>Intern</h3>
+            <span class="experience-company">Nigeria LNG (NLNG)</span>
+            <span class="experience-period">March 2024 – August 2024</span>
+          </div>
+          <ul class="experience-details">
+            <li>Redesigned and enhanced HRE intranet pages using HTML, CSS, and SharePoint</li>
+            <li>Developed the SIWES Direct App with an admin portal for managing internship applications</li>
+            <li>Provided IT support, resolving network, system, and display-related issues</li>
+            <li>Conducted data analysis and improved inventory tracking processes</li>
+            <li>Mentored a high school intern and supervised their project delivery</li>
+          </ul>
+        </div>
+        
+        <div class="experience-item">
+          <div class="experience-header">
+            <h3>Operations Coordinator</h3>
+            <span class="experience-company">Jojejat Linkup</span>
+            <span class="experience-period">September 2017 – Present</span>
+          </div>
+          <ul class="experience-details">
+            <li>Oversee day-to-day operations, ensuring efficient service delivery and customer satisfaction</li>
+            <li>Prepare and manage invoices, purchase orders, and delivery notes for seamless business transactions</li>
+            <li>Handle all IT-related tasks, including system troubleshooting, software updates, and database management</li>
+            <li>Support inventory management by tracking stock levels and ensuring accurate documentation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Mobile Development</h3>
+          <p>React Native, Flutter (basic), Swift (basic), Kotlin (basic), iOS/Android deployment, TestFlight</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>Frontend</h3>
+          <p>React.js, React Native, JavaScript, HTML, CSS, responsive design, component architecture</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-server"></i>
+          </div>
+          <h3>Backend & APIs</h3>
+          <p>Node.js, Express.js, Django, REST APIs, Rust integration, Python, Java, C++, C#</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>Databases</h3>
+          <p>PostgreSQL, MySQL, Firebase, Supabase, data modeling</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-container">
+        <div class="project-card">
+          <img src="nlngSiwesProject.png" alt="SIWES Direct App" class="project-image">
+          <div class="project-content">
+            <h3>SIWES Direct App</h3>
+            <p>Internship application platform for Nigeria LNG students.</p>
+            <ul class="project-features">
+                <li>Admin dashboard for managing applications</li>
+                <li>Form validation and authentication</li>
+                <li>Responsive design with MySQL backend</li>
+            </ul>
+            <div class="project-tags">
+                <span class="project-tag"><i class="fab fa-php"></i> PHP</span>
+                <span class="project-tag"><i class="fas fa-database"></i> MySQL</span>
+                <span class="project-tag"><i class="fab fa-html5"></i> HTML</span>
+                <span class="project-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                <span class="project-tag"><i class="fab fa-js"></i> JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://nlngsiwesapp-nlng.msappproxy.net/SIWES_Application/index" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <!-- <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <img src="PLAYR_logo.png" alt="PLAYR Mobile App" class="project-image">
+          <div class="project-content">
+            <h3>PLAYR</h3>
+            <p>Mobile app currently in TestFlight beta (Apple-approved).</p>
+            <ul class="project-features">
+                <li>Authentication and real-time features via Supabase</li>
+                <li>Clean UI with focus on performance</li>
+                <li>Cross-platform iOS/Android deployment</li>
+            </ul>
+            <div class="project-tags">
+                <span class="project-tag"><i class="fab fa-react"></i> React Native</span>
+                <span class="project-tag"><i class="fas fa-database"></i> Supabase</span>
+                <span class="project-tag"><i class="fab fa-apple"></i> TestFlight</span>
+                <span class="project-tag"><i class="fas fa-mobile-alt"></i> iOS/Android</span>
+            </div>
+            <div class="project-links">
+              <a href="https://testflight.apple.com/join/8kgMCGJh" class="project-link"><i class="fas fa-external-link-alt"></i> TestFlight</a>
+              <!-- <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-content">
+            <div class="app-screenshots">
+              <div class="app-screenshot-item">
+                <img src="gignation+_1.png" alt="GigNation Artisan App">
+                <div class="app-label">Artisan App</div>
+              </div>
+              <div class="app-screenshot-item">
+                <img src="gignation_1.PNG" alt="GigNation Customer App">
+                <div class="app-label">Customer App</div>
+              </div>
+            </div>
+            <h3>GigNation</h3>
+            <p>Dual mobile apps connecting artisans with customers (current project).</p>
+            <ul class="project-features">
+                <li>Built both apps from scratch with React Native</li>
+                <li>Integrated REST APIs from Rust backend</li>
+                <li>Reusable component library and scalable architecture</li>
+            </ul>
+            <div class="project-tags">
+                <span class="project-tag"><i class="fab fa-react"></i> React Native</span>
+                <span class="project-tag"><i class="fas fa-cog"></i> Rust Backend</span>
+                <span class="project-tag"><i class="fas fa-bolt"></i> REST APIs</span>
+                <span class="project-tag"><i class="fas fa-mobile-alt"></i> iOS/Android</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Coming Soon</a>
+              <!-- <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a> -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- <div class="project-card">
+          <div class="project-content">
+            <h3>Acelet Security Solutions</h3>
+            <p>Security-focused application for estate and compound access control systems.</p>
+            <ul class="project-features">
+                <li>Real-time alerts and visitor authentication</li>
+                <li>Data logging and security monitoring</li>
+                <li>Clean UI with focus on security and accessibility</li>
+            </ul>
+            <div class="project-tags">
+                <span class="project-tag"><i class="fab fa-react"></i> React</span>
+                <span class="project-tag"><i class="fab fa-google"></i> Flutter</span>
+                <span class="project-tag"><i class="fas fa-fire"></i> Firebase</span>
+                <span class="project-tag"><i class="fas fa-shield-alt"></i> Security</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> In Development</a>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="education-container">
+        <div class="education-item">
+          <div class="education-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="education-content">
+            <h3>B.Eng. Computer Engineering</h3>
+            <p class="education-school">Nile University of Nigeria</p>
+            <p class="education-period">2020 – 2025</p>
+            <p class="education-gpa">CGPA: 4.05/5.00 (Second Class Upper)</p>
+            <div class="education-details">
+              <h4>Relevant Coursework:</h4>
+              <ul>
+                <li>Web Programming</li>
+                <li>Data Structures and Algorithms</li>
+                <li>Systems Analysis and Design</li>
+                <li>Project Management</li>
+              </ul>
+              <h4>Certifications:</h4>
+              <ul>
+                <li>HCIA-Datacom V1.0 Course</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Email</h3>
+              <a href="mailto:ohikere88@gmail.com">ohikere88@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Phone</h3>
+              <a href="tel:+2347088525487">+234 7088 525 487</a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Location</h3>
+              <p>Nigeria</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <form id="contactForm" action="https://formsubmit.co/ohikere88@gmail.com" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/juhshua/" class="social-link"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/ohikerejoshua" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://x.com/ohikerejoshua" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com/ohikerejoshua" class="social-link"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2025 Ohikere Joshua</p>
+  </footer>
+  
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+    
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        try {
+          const formData = new FormData(contactForm);
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+          
+          if (response.ok) {
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            contactForm.reset();
+          } else {
+            alert('Oops! There was a problem sending your message. Please try again or email me directly at ohikere88@gmail.com');
+          }
+        } catch (error) {
+          alert('Oops! There was a problem sending your message. Please try again or email me directly at ohikere88@gmail.com');
+        } finally {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
